@@ -10,4 +10,10 @@ commands:
   Testr:
     description: Shows arguments passed to Testr.
     usage: /<command>
+  Drillr:
+    description: Drills down deep with explosions!
+    usage: /<command>
+  Flamr:
+    description: Casts the classic fs explo combo on target.
+    usage: /<command>
 version: 0.0.1

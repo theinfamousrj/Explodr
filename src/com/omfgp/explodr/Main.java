@@ -5,10 +5,12 @@ import java.util.logging.Logger;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.World;
+import org.bukkit.block.Block;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.util.Vector;
 
 public class Main extends JavaPlugin {
 	
@@ -40,13 +42,14 @@ public class Main extends JavaPlugin {
 			int nradius = radius*(-1);
 			
 			//make an explosion in that radius
-			for(int x=1; x<=radius; x++) {
-				for(int y=1; y<=radius; y++) {
-					for(int z=1; z<=0; z++) {
-						this.thePlayer.getWorld().createExplosion(pLoc.getX()+x, pLoc.getY()+y, pLoc.getZ()+z, 3.0F, false);
+			for(int x=nradius; x<=radius; x++) {
+				for(int y=nradius; y<=radius; y++) {
+					for(int z=nradius; z<=0; z++) {
+						this.thePlayer.getWorld().createExplosion(pLoc.getX()+x, pLoc.getY()+y, pLoc.getZ()+z, 4.0F, true);
 					}
 				}
 			}
+			this.thePlayer.setVelocity(new Vector(0,0,0));
 		}
 		
 		//if the /findr command is sent
@@ -61,6 +64,22 @@ public class Main extends JavaPlugin {
 		if(cmd.getName().equalsIgnoreCase("Testr")) {
 			for(int i=0; i<args.length; i++) {
 				this.thePlayer.sendMessage(ChatColor.GREEN + "args["+ i +"]: " + args[i]);
+			}
+		}
+		
+		if(cmd.getName().equalsIgnoreCase("Drillr")) {
+			Location bLoc = this.thePlayer.getLocation();
+			for(int i=bLoc.getBlockZ()-2; i==bLoc.getZ()-(Integer.valueOf(args[0])+2); i--) {
+				this.thePlayer.getWorld().createExplosion(bLoc.getX(), bLoc.getY(), bLoc.getZ(), 4.0F, true);
+			}
+			this.thePlayer.setVelocity(new Vector(0,0,0));
+		}
+		
+		if(cmd.getName().equalsIgnoreCase("Flamr")) {
+			Block targetBlock = this.thePlayer.getTargetBlock(null, 50);
+			Location bLoc = targetBlock.getLocation();
+			for(int i=bLoc.getBlockZ(); i>bLoc.getZ()+2; i++) {
+				this.thePlayer.getWorld().createExplosion(bLoc.getX(), bLoc.getY(), bLoc.getZ(), 4.0F, true);
 			}
 		}
 		
