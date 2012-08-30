@@ -1,0 +1,10 @@
+name: Explodr
+main: com.omfgp.explodr.Main
+commands:
+  Explodr:
+    description: Explodes things all around you.
+    usage: /<command>
+  Findr:
+    description: Shows your location on the screen.
+    usage: /<command>
+version: 0.0.1
