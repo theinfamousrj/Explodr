@@ -36,14 +36,14 @@ public class Main extends JavaPlugin {
 			Location pLoc = this.thePlayer.getLocation();
 			
 			//make a radius
-			int radius = 2;
+			int radius = 3;
 			int nradius = radius*(-1);
 			
 			//make an explosion in that radius
-			for(int x=nradius; x<=radius; x++) {
-				for(int y=nradius; y<=radius; y++) {
-					for(int z=nradius; z<=radius; z++) {
-						this.thePlayer.getWorld().createExplosion(pLoc.getX()+x, pLoc.getY()+y, pLoc.getZ()+z, 4.0F, true);
+			for(int x=1; x<=radius; x++) {
+				for(int y=1; y<=radius; y++) {
+					for(int z=1; z<=0; z++) {
+						this.thePlayer.getWorld().createExplosion(pLoc.getX()+x, pLoc.getY()+y, pLoc.getZ()+z, 3.0F, false);
 					}
 				}
 			}
@@ -56,6 +56,14 @@ public class Main extends JavaPlugin {
 													   + this.thePlayer.getLocation().getY() + ", "
 													   + this.thePlayer.getLocation().getZ() + " ]");
 		}
+		
+		//if the /testr command is sent
+		if(cmd.getName().equalsIgnoreCase("Testr")) {
+			for(int i=0; i<args.length; i++) {
+				this.thePlayer.sendMessage(ChatColor.GREEN + "args["+ i +"]: " + args[i]);
+			}
+		}
+		
 		return false;
 	}
 

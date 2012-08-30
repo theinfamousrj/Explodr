@@ -7,4 +7,7 @@ commands:
   Findr:
     description: Shows your location on the screen.
     usage: /<command>
+  Testr:
+    description: Shows arguments passed to Testr.
+    usage: /<command>
 version: 0.0.1
