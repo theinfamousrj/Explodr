@@ -1,2 +1,11 @@
+<<<<<<< HEAD
 
 .settings/org.eclipse.jdt.core.prefs
+=======
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+>>>>>>> bc44698f3eb45a23ea357d7381ca7d212dcda83e
