@@ -1,6 +1,9 @@
 package com.omfgp.explodr;
 
 import java.util.logging.Logger;
+
+import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -23,7 +26,22 @@ public class Main extends JavaPlugin {
 	}
 	
 	public boolean onCommand(CommandSender sender, Command cmd, String cmdLabel, String[] args) {
+		//Check if the sender is a player.
+		if(sender instanceof Player) {
+			this.thePlayer = (Player) sender;
+		}
 		
+		if(cmd.getName().equalsIgnoreCase("Explodr")) {
+
+		}
+		
+		if(cmd.getName().equalsIgnoreCase("Findr")) {
+			this.thePlayer.sendMessage(ChatColor.GREEN + "Your location is: [ "
+													   + this.thePlayer.getLocation().getX() + ", "
+													   + this.thePlayer.getLocation().getY() + ", "
+													   + this.thePlayer.getLocation().getZ() + " ]");
+		}
+		return false;
 	}
 
 }
